@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script>
+    var question = ["Who is the father of Computer", "What is the full form of CPU", 
+    "Which of the following computer languages is written in binary codes only",
+    "Which of the following is the brain of computer", "Which of the following is the first neural network computer",
+    "Which of the following is the smallest unit of data in computer", "Which of the following is not a type of omputer code",
+    "Which of the following can access the server", "What is the decimal equivalent of the binary number 10111", "How many color dots make up one color pixel on a screen"];
+    var option1 = ["James Gosling", "Computer Processing Unit", "Pascal", "Central Processing Unit", "AN", "Bit", "EDIC", "Web Client", "21", "256"];
+    var option2 = ["Chharles Babbage", "Computer Principle Unit", "Machine Language", "Memory", "AM", "KB", "ASCII", "User", "39", "16"];
+    var option3 = ["Dennis Ritche", "Central Processing Unit", "C", "Arithmetic and Logic Unit", "RFD", "Nibble", "BCD", "Web Browser", "42", "3"];
+    var option4 = ["Bjarne Stroustrup", "Control Processing Unit", "C#", "Control Unit", "SNARC", "Byte", "EBCDIC", "Web Server", "23", "8"];
+    var answer = [2, 3, 2, 1, 4, 1, 1, 1, 4, 3]
+    var count=[0,0,0,0,0,0,0,0,0,0];
+
+    // Timer......//
+    var h=1, m=60,s=60;
+   var k = setInterval(function(){
+    document.getElementById("x").innerHTML= "Time"+ h + ":" + m+":"+s;
+    s--;
+    if(s==-1){
+        m--,s=60;
+    }
+    if(m==-1){
+       h--,m=60,s=60;
+    }
+    if(h==-1){
+        clearInterval(k);
+    }
+    
+   },100)
+   
+   var index;
+   function show(v)
+   {
+    index=v;
+
+    document.getElementById("q").innerHTML="Question.  "+question[v];
+    document.getElementById("q").innerHTML+="<br><input type='radio' name='x' id='a' value=1>"+option1[v];
+    document.getElementById("q").innerHTML+="<br><input type='radio' name='x' id='b' value=2>"+option2[v];
+    document.getElementById("q").innerHTML+="<br><input type='radio' name='x' id='c' value=3>"+option3[v];
+    document.getElementById("q").innerHTML+="<br><input type='radio' name='x' id='d' value=4>"+option4[v];
+}
+
+function next()
+{
+   
+    if(index==9){
+        show(0);
+    }
+    else{
+        show(index+1);
+    }
+}
+
+function prev()
+{
+    
+    if(index==0){
+        show(9);
+    }
+    else{
+        show(index-1);
+    }
+}
+
+function ans(){
+    var x;
+    if(document.getElementById("a").checked){
+        x= document.getElementById("a").value;
+    }
+    if(document.getElementById("b").checked){
+        x= document.getElementById("b").value;
+    }
+    if(document.getElementById("c").checked){
+        x= document.getElementById("c").value;
+    }
+    if(document.getElementById("d").checked){
+        x= document.getElementById("d").value;
+    }
+    if(x==answer[index]){
+       count[index]=1;
+    }
+    else
+    {
+        count[index]=0;
+    }
+
+     alert("Answer is save");
+
+}
+
+function finish()
+{
+    var sum = 0;
+    for(i=o; i<count.length; i++){
+        sum = sum+count[i];
+    }
+    alert(sum);
+}
+</script>
+   <style>
+    *{
+        margin: 0px;
+    }
+    .header{
+        background-color: black;
+        height: 150px;
+        width: 100%;
+    }
+    .footer{
+        height: 50px;
+        width: 900px;
+        margin-top: 70px;
+        margin-left: 300px;
+        background-color: aquamarine;
+    }
+   </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="color: white; text-align: center; padding-top: 20px;">ONLINE EXAMINATION</h1>
+    <button onclick="show(0)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 30px; margin-top: 20px;">1</button>
+    <button onclick="show(1)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">2</button>
+    <button onclick="show(2)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">3</button>
+    <button onclick="show(3)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">5</button>
+    <button onclick="show(4)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">4</button>
+    <button onclick="show(5)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">6</button>
+    <button onclick="show(6)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">7</button>
+    <button onclick="show(7)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">8</button>
+    <button onclick="show(8)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">9</button>
+    <button onclick="show(9)" style="height: 50px; width: 50px; background-color: aquamarine; margin-left: 20px;">10</button>
+    <button id="x" style="margin-left: 200px; height: 60px; width: 90px; "></button>
+
+    <button id="y" style=" margin-top:300px; margin-left:700px; height: 30px; width: 100px; background-color: peru;" onclick="next()">NEXT</button>
+    <button id="z" style=" padding-top:-35px; margin-left:850px; height: 30px; width: 100px; background-color: rgb(101, 205, 63);" onclick="prev()">PREVIOUS</button>
+    <button style=" padding-top:-35px; margin-left:950px; height: 30px; width: 100px; background-color: rgb(101, 205, 63);" onclick="ans()">SAVE</button>
+    <button style=" padding-top:-35px; margin-left:950px; height: 30px; width: 100px; background-color: rgb(101, 205, 63);" onclick="finish()">FINISH</button>
+    
+    </div>
+
+    <p id="q"></p>
+</body>
+</html
